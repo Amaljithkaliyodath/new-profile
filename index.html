@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Island - Explore the Azores</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        
+        .site-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            min-height: 100vh;
+        }
+        
+        .navbar {
+            padding: 20px 30px;
+            background-color: white;
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 24px;
+        }
+        
+        .navbar-brand span {
+            color: #333;
+        }
+        
+        .nav-link {
+            color: #666;
+            margin-left: 15px;
+            margin-right: 15px;
+            font-size: 15px;
+        }
+        
+        .nav-link:hover {
+            color: #000;
+        }
+        
+        .hero-section {
+            position: relative;
+            height: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 0 30px 30px;
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .hero-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 60px;
+            z-index: 2;
+            background: #181d1b;
+            /* background-image: url(); */
+        }
+        
+        .hero-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+           background-image: ;
+            z-index: -1;
+        }
+        
+        .hero-content h1 {
+            font-size: 60px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            max-width: 600px;
+        }
+        
+        .hero-content p {
+            font-size: 18px;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .btn-book {
+            background-color:transparent;
+            color: #efe0e0;
+            border-radius: 30px;
+            padding: 10px 30px;
+            font-weight: 500;
+            border: solid rgb(255, 249, 249) 1px;
+            font-size: 16px;
+            width: fit-content;
+        }
+        
+
+        .navigation-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .dot {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(5px);
+            border: none;
+            color: white;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .dot:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .dot.active {
+            background-color: white;
+            color: #333;
+        }
+        
+        .hamburger-menu {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+        }
+
+        .hero-btn{
+          display: flex;
+        }
+        
+        @media (max-width: 992px) {
+            .navbar-collapse {
+                position: absolute;
+                top: 70px;
+                right: 0;
+                width: 200px;
+                background-color: white;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                z-index: 1000;
+            }
+            
+            .hero-content {
+                padding-left: 30px;
+            }
+            
+            .hero-content h1 {
+                font-size: 40px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 32px;
+            }
+            
+            .hero-content p {
+                font-size: 16px;
+            }
+            
+            .btn-book {
+                padding: 8px 20px;
+                font-size: 14px;
+            }
+            
+            .dot {
+                width: 30px;
+                height: 30px;
+                font-size: 12px;
+            }
+        }
+
+        .about-section {
+            padding: 100px 0;
+        }
+        
+        .about-content {
+            padding-right: 30px;
+        }
+        
+        .about-content h2 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .about-content h2:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 80px;
+            height: 4px;
+            background-color: #3498db;
+        }
+        
+        .about-content p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+        
+        .btn-learn-more {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            border: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-learn-more:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .experience-section {
+            background-color: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            height: 100%;
+        }
+        
+        .experience-section h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #333;
+            text-align: center;
+        }
+        
+        .experience-item {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #2b2121;;
+        }
+        
+        .experience-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .company-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: #3498db;
+            margin-bottom: 5px;
+        }
+        
+        .job-duration {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .job-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #444;
+        }
+        
+        .experience-item ul {
+            padding-left: 20px;
+        }
+        
+        .experience-item li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        
+        .experience-item p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .badge-internship {
+            background-color: #e74c3c;
+            color: white;
+            font-size: 12px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin-left: 10px;
+            font-weight: 500;
+            vertical-align: middle;
+        }
+        
+        .img-about {
+            width: 100%;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+        
+        @media (max-width: 991px) {
+            .about-content {
+                padding-right: 0;
+                margin-bottom: 50px;
+            }
+            
+            .experience-section {
+                margin-top: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Our tours</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Booking</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">FAQ</a>
+                        </li>
+                    </ul>
+                </div>
+                <button class="hamburger-menu d-lg-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="d-none d-lg-block">
+                    <button class="btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <img src="/api/placeholder/1200/500" alt="Azores landscape with green fields and ocean" class="hero-image">
+            <div class="hero-content col-lg-12">
+                <h1>Amaljith k</h1>
+                <p>Full Stack Developer</p>
+                <div class="hero-btn">
+                  <button class="btn btn-book">Resume</button>
+                <button class="btn btn-book">LinkedIn</button>
+                </div>
+            </div>
+            
+            <!-- Navigation Dots -->
+            <div class="navigation-dots">
+                <button class="dot">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <button class="dot active">
+                    <i class="fas fa-circle"></i>
+                </button>
+            </div>
+        </div>
+
+        <section class="about-section">
+          <div class="container">
+              <div class="row">
+                  <!-- Left Side: About Content -->
+                  <div class="col-lg-6">
+                      <div class="about-content">
+                          <h2>About Our Island Tours</h2>
+                          <p>Founded in 2010, Island Tours has been the leading explorer service in the Azores archipelago. We specialize in creating unique experiences that connect visitors with the unspoiled beauty of these Portuguese islands.</p>
+                          <p>Our team of experienced local guides brings unparalleled knowledge of the islands' hidden gems, from secluded beaches and hot springs to breathtaking hiking trails and dolphin watching spots.</p>
+                         
+                          <button class="btn btn-learn-more">Learn More About Us</button>
+                      </div>
+                  </div>
+                  
+                  <!-- Right Side: Experience Section -->
+                  <div class="col-lg-6">
+                      <div class="experience-section">
+                          <h3>Professional Experience</h3>
+                          
+                          <div class="experience-item">
+                              <div class="company-name">Synnefo Solutions <span class="badge-internship">INTERNSHIP</span></div>
+                              <span class="job-duration">Nov 07, 2023 - Dec 07, 2023</span>
+                              <div class="job-title">Full-Stack Python Web Development Course and Internship</div>
+                              <ul>
+                                  <li>Gained experience working with front-end languages such as HTML, CSS, and Bootstrap</li>
+                                  <li>Worked with backend technologies including Python and Django</li>
+                              </ul>
+                          </div>
+                          
+                          <div class="experience-item">
+                              <div class="company-name">ExtraMindTech</div>
+                              <span class="job-duration">July 17, 2024 - Aug 17, 2024</span>
+                              <div class="job-title">Software Developer</div>
+                              <p>APIs section for a trading application: Developed and implemented APIs for a trading application, which helped to handle data efficiently and make secure transactions.</p>
+                              <p>Demonstrated technical knowledge and professionalism: Sincere, hardworking, and enthusiasm contribute to positive contribution in the team environment.</p>
+                              <p>Maintained professional behavior, showing a positive attitude and strong work ethic</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
