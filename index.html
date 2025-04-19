@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Amaljith K - Portfolio</title>
+  <title>Amaljith K</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -16,6 +16,20 @@
       margin: 0;
       padding: 0;
     }
+    .section-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+section.visible .section-title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
     .navbar {
       background-color: #fff;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
@@ -34,15 +48,22 @@
       color: #0d6efd;
     }
     .hero-section {
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://source.unsplash.com/1600x600/?developer,technology') no-repeat center center;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(8 2 2 / 60%)), url('static/optimized_background.gif') no-repeat center center;
       background-size: cover;
-      height: 600px;
+      height: 900px;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       color: white;
       padding: 0 1rem;
+      margin: 10px;
+      border-radius: 10px;
+      animation: fadeInHero 1.5s ease forwards;
+    }
+    @keyframes fadeInHero {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
     }
     .hero-section h1 {
       font-size: 3rem;
@@ -85,7 +106,11 @@
     .hero-btn .btn:hover {
       color: #000;
     }
-
+    .border-hover:hover {
+      transform: translateY(-5px);
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    }
     @keyframes fadeInDown {
       from { opacity: 0; transform: translateY(-30px); }
       to { opacity: 1; transform: translateY(0); }
@@ -94,17 +119,6 @@
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
-    section {
-      padding: 4rem 1rem;
-    }
-    .section-title {
-      text-align: center;
-      margin-bottom: 2rem;
-      font-size: 2rem;
-      font-weight: 700;
-    }
-
     .card {
       transition: all 0.3s ease-in-out;
     }
@@ -112,7 +126,6 @@
       transform: translateY(-5px) scale(1.02);
       box-shadow: 0 15px 25px rgba(13, 110, 253, 0.2);
     }
-
     #skills i {
       transition: transform 0.3s, filter 0.3s;
     }
@@ -120,18 +133,36 @@
       transform: scale(1.2);
       filter: drop-shadow(0 0 5px #0d6efd);
     }
-
     #confirmation {
       display: none;
       margin-top: 1rem;
     }
-
     #backToTop {
       display: none;
       z-index: 999;
       border-radius: 50%;
       padding: 12px 15px;
     }
+    .footer-section {
+      background: linear-gradient(135deg, #1c1c1c, #121212);
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+    }
+    .footer-section .social-icon {
+      display: inline-block;
+      margin: 0 12px;
+      font-size: 1.5rem;
+      color: #ffffff;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    .footer-section .social-icon:hover {
+      color: #0dcaf0;
+      transform: scale(1.2);
+      text-shadow: 0 0 10px rgba(13, 202, 240, 0.5);
+    }
+
+
+ 
   </style>
 </head>
 <body>
@@ -161,29 +192,55 @@
       <h1>Amaljith K</h1>
       <p>Full Stack Developer</p>
       <div class="hero-btn">
-        <a href="#" class="btn">Resume</a>
-        <a href="#" class="btn">LinkedIn</a>
+        <a href="./static/Amaljith k.pdf" class="btn">Resume</a>
+        <a href="https://www.linkedin.com/in/amaljith-kaliyodath/" class="btn">LinkedIn</a>
       </div>
     </div>
   </section>
 
   <!-- About -->
-  <section id="about" class="bg-white py-5">
+  <section id="about" class="py-5 bg-light">
     <div class="container">
-      <div class="row align-items-center g-5">
-        <div class="col-lg-6">
-          <img src="https://source.unsplash.com/600x400/?developer,profile" alt="Profile Image" class="img-fluid rounded shadow">
-        </div>
-        <div class="col-lg-6">
-          <h2 class="section-title mb-3">👋 About Me</h2>
-          <p class="lead">I’m <strong>Amaljith K</strong>, a Full Stack Developer passionate about turning ideas into interactive, functional web applications.</p>
-          <p>With a strong foundation in Python, Django, and modern frontend libraries, I create responsive and user-friendly websites. I thrive in collaborative environments and love using tools like Docker, GitHub, and REST APIs to build robust web solutions.</p>
-          <p class="mb-4">Whether it’s building a portfolio or managing complex backend systems, I aim for clean, maintainable code and a great user experience.</p>
-          <a href="#projects" class="btn btn-outline-primary px-4 py-2">Explore My Work</a>
+      <h2 class="section-title text-center mb-5">About Me</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-10 text-center">
+          <h3 class="fw-bold mb-3">Hi, I'm <span class="text-primary">Amaljith K</span></h3>
+          <p class="lead text-muted mb-4">
+            I’m a passionate <strong>Python Full Stack Developer</strong> with hands-on experience in designing and developing full-featured web applications using modern technologies. I love creating clean, responsive UIs and building secure, scalable backends.
+          </p>
+  
+          <div class="row g-4 mt-4">
+            <!-- Frontend -->
+            <div class="col-md-6">
+              <div class="p-4 bg-white shadow-sm rounded-4 text-center h-100 border-hover">
+                <i class="fas fa-laptop-code fa-2x text-primary mb-3"></i>
+                <h5 class="fw-semibold">Frontend Development</h5>
+                <p class="mb-0">Skilled in HTML, CSS, Bootstrap, Tailwind CSS, JavaScript, and Sass. I build interactive, responsive interfaces with a strong focus on user experience.</p>
+              </div>
+            </div>
+  
+            <!-- Backend -->
+            <div class="col-md-6">
+              <div class="p-4 bg-white shadow-sm rounded-4 text-center h-100 border-hover">
+                <i class="fas fa-server fa-2x text-primary mb-3"></i>
+                <h5 class="fw-semibold">Backend Development</h5>
+                <p class="mb-0">Experienced in Python, Django, REST APIs, MySQL, SQLite, and Docker. I create secure, scalable, and efficient backend systems.</p>
+              </div>
+            </div>
+          </div>
+  
+          <div class="mt-4">
+            <a href="#projects" class="btn btn-primary px-4 py-2 rounded-pill me-3">View My Projects</a>
+            <a href="#contact" class="btn btn-outline-dark px-4 py-2 rounded-pill">Let’s Connect</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
+  
+  
+  
+  
 
   <!-- Skills -->
   <section id="skills">
@@ -205,7 +262,6 @@
         <div class="col-md-3 col-sm-6 mb-4"><i class="fas fa-database fa-3x text-muted"></i><h5 class="mt-2">SQLite</h5></div>
         <div class="col-md-3 col-sm-6 mb-4"><i class="fas fa-project-diagram fa-3x text-danger"></i><h5 class="mt-2">Zapier</h5></div>
         <div class="col-md-3 col-sm-6 mb-4"><i class="fab fa-sass fa-3x text-pink"></i><h5 class="mt-2">SASS</h5></div>
-        <div class="col-md-3 col-sm-6 mb-4"><i class="fas fa-tasks fa-3x text-primary"></i><h5 class="mt-2">Jira</h5></div>
       </div>
     </div>
   </section>
@@ -219,21 +275,24 @@
           <div class="card h-100 p-3">
             <h5>GMRL Laboratory</h5>
             <p>A web app built with HTML, CSS, Bootstrap, JS on the frontend and Python, Django for backend. Users can interact with lab data smoothly.</p>
-            <a href="https://github.com/Amaljithkaliyodath/GMRL" class="btn btn-outline-primary mt-2">View on GitHub</a>
+            <a href="https://github.com/Amaljithkaliyodath/GMRL" target="_blank" class="btn btn-outline-dark mt-2">
+              View on <i class="fab fa-github ms-2"></i>
+            </a>
+            
           </div>
         </div>
         <div class="col-md-4 mb-4">
           <div class="card h-100 p-3">
             <h5>Blog Application</h5>
             <p>Full-featured blog platform with authentication, CRUD, and user profiles. Built using Django REST API, MySQL, Tailwind, Docker.</p>
-            <a href="https://github.com/Amaljithkaliyodath/my_blog-application-" class="btn btn-outline-primary mt-2">View on GitHub</a>
+            <a href="https://github.com/Amaljithkaliyodath/my_blog-application-"  class="btn btn-outline-dark mt-2"> View on <i class="fab fa-github ms-2"></i></a>
           </div>
         </div>
         <div class="col-md-4 mb-4">
           <div class="card h-100 p-3">
             <h5>Asset-Sync</h5>
             <p>Asset management system for IT teams to organize and audit hardware/software assets. Full stack project with Django + MySQL.</p>
-            <a href="https://github.com/Amaljithkaliyodath/Assest_sync" class="btn btn-outline-primary mt-2">View on GitHub</a>
+            <a href="https://github.com/Amaljithkaliyodath/Assest_sync" class="btn btn-outline-dark mt-2"> View on <i class="fab fa-github ms-2"></i></a>
           </div>
         </div>
       </div>
@@ -276,50 +335,122 @@
     </div>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" class="bg-white">
-    <div class="container">
-      <h2 class="section-title">Contact Me</h2>
-      <div class="row">
-        <div class="col-md-6 mb-4">
-          <form id="contactForm">
-            <div class="mb-3"><input type="text" class="form-control" id="name" placeholder="Your Name" required></div>
-            <div class="mb-3"><input type="email" class="form-control" id="email" placeholder="Your Email" required></div>
-            <div class="mb-3"><textarea class="form-control" id="message" rows="5" placeholder="Your Message" required></textarea></div>
-            <button type="submit" class="btn btn-primary">Send Message</button>
-            <div id="confirmation" class="alert alert-success mt-3">✅ Your message has been sent to <strong>amaljithkaliyodath@gmail.com</strong></div>
+<!-- Contact Section - Message Form -->
+<section id="contact" class="bg-white py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mb-4">
+        <div class="p-4 shadow-sm rounded-4 border">
+          <h5 class="fw-bold mb-4">Send a Message</h5>
+          <form
+          action="https://formspree.io/f/mvgkegke"
+          method="POST"
+        >
+            <input type="text" name="name" class="form-control mb-3" placeholder="Your Name" required>
+            <input type="email" name="email" class="form-control mb-3" placeholder="Your Email" required>
+            <textarea name="message" class="form-control mb-3" rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit" class="btn btn-primary w-100">Send Message</button>
           </form>
+          
         </div>
-        <div class="col-md-6">
-          <h5>Social Links</h5>
-          <p><i class="fas fa-envelope me-2"></i> amaljithkaliyodath@gmail.com</p>
-          <p><i class="fas fa-phone me-2"></i> +91 9207970404</p>
-          <p><i class="fab fa-github me-2"></i> <a href="https://github.com/Amaljithkaliyodath" target="_blank">GitHub</a></p>
-          <p><i class="fab fa-linkedin me-2"></i> <a href="https://linkedin.com/in/amaljith-kaliyodath" target="_blank">LinkedIn</a></p>
-          <p><i class="fas fa-globe me-2"></i> <a href="https://amaljithkaliyodath.github.io/Portfolio-/" target="_blank">Portfolio Website</a></p>
+      </div>
+
+      <!-- Redesigned Social Info Section like image -->
+      <div class="col-md-6">
+        <div class="p-4 rounded-4 shadow-sm border bg-white">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="fw-bold mb-0">Contact Info</h5>
+           
+          </div>
+          <div class="d-flex align-items-center mb-3">
+           
+            <div>
+              <div class="fw-semibold">Amaljith K</div>
+              <div class="small text-muted">Full Stack Developer </div>
+            </div>
+
+          </div>
+
+          <ul class="list-unstyled mb-4">
+            <li class="mb-3 d-flex align-items-start">
+              <i class="fas fa-location-dot me-3 mt-1 text-primary"></i>
+              <div>
+                <div class="text-muted small">Location</div>
+                <div>Kerala, India</div>
+              </div>
+            </li>
+            <li class="mb-3 d-flex align-items-start">
+              <i class="fas fa-cogs me-3 mt-1 text-primary"></i>
+              <div>
+                <div class="text-muted small">Specialty</div>
+                <div>Full Stack</div>
+              </div>
+            </li>
+            <li class="d-flex align-items-start">
+              <i class="fas fa-envelope me-3 mt-1 text-primary"></i>
+              <div>
+                <div class="text-muted small">Email</div>
+
+                <a href="mailto:amaljithkaliyodath@gmail.com"  style="text-decoration: none; color: #000;">amaljithkaliyodath@gmail.com</a>
+              </div>
+            </li>
+          </ul>
+
+
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+  <!-- Footer -->
+<footer class="footer-section bg-dark text-white pt-5 pb-4 mt-5">
+  <div class="container text-center">
+
+    <!-- Social Icons -->
+    <div class="mb-4">
+      <a href="https://github.com/Amaljithkaliyodath" target="_blank" class="social-icon">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://linkedin.com/in/amaljith-kaliyodath" target="_blank" class="social-icon">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="mailto:amaljithkaliyodath@gmail.com" class="social-icon">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://amaljithkaliyodath.github.io/Portfolio-/" target="_blank" class="social-icon">
+        <i class="fas fa-globe"></i>
+      </a>
+    </div>
+
+    <!-- Footer Text -->
+    <p class="small mb-0 text-light">&copy; 2025 <strong>Amaljith K</strong>. All rights reserved.</p>
+  </div>
+</footer>
+
 
   <!-- Back to Top Button -->
   <button id="backToTop" class="btn btn-primary position-fixed"><i class="fas fa-arrow-up"></i></button>
 
-  <script>
-    // Contact form handling
-    document.getElementById("contactForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-      document.getElementById("confirmation").style.display = "block";
-      this.reset();
-    });
 
-    // Back to top functionality
-    const topBtn = document.getElementById("backToTop");
-    window.onscroll = () => {
-      topBtn.style.display = window.scrollY > 300 ? "block" : "none";
-    };
-    topBtn.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
-  </script>
+
+<script>
+  // Smooth animation on scroll using IntersectionObserver
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  document.querySelectorAll('section').forEach(section => {
+    observer.observe(section);
+  });
+</script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
